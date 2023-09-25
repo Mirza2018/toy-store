@@ -1,14 +1,16 @@
 
+import { Outlet } from 'react-router-dom'
 import './App.css'
+import Navber from './Pages/ShearPages/Navber/Navber'
 
 function App() {
 
 
   return (
     <div>
-   
-      <h1>Vite + React</h1>
-    
+
+      <Navber></Navber>
+      <Outlet></Outlet>
     </div>
   )
 }
