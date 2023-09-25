@@ -1,12 +1,37 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
+    const { createUser, update } = useContext(AuthContext)
     const handleForm = e => {
         e.preventDefault()
         const password = e.target.password.value;
         const name = e.target.name.value;
         const email = e.target.email.value;
         console.log(password, email,name);
+        createUser(email, password)
+            .then(res => {
+                console.log(res.user);
+                update(name)
+                    .then(res => {
+
+                        Swal.fire(
+                            'Successfully Registation Done!',
+                            'your welcome',
+                            'success'
+                        )
+                        e.target.reset()
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
 
     }
     return (

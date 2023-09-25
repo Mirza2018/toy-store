@@ -1,11 +1,36 @@
-import { Link } from 'react-router-dom';
-const Login = () => {
 
+
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../Provider/AuthProvider';
+import { useContext } from "react";
+
+const Login = () => {
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+    const navigate = useNavigate()
+    const { logIn, googleLogIn } = useContext(AuthContext)
     const handleForm = e => {
         e.preventDefault()
         const password = e.target.password.value;
         const email = e.target.email.value;
         console.log(password, email);
+        logIn(email, password)
+        .then(res => {
+            console.log(res.user);
+            Swal.fire(
+                'Successfully login!',
+                'your welcome',
+                'success'
+            )
+            e.target.reset()
+            navigate(from)
+      
+        })
+        .catch(error => {
+            console.log(error);
+        })
 
     }
 
