@@ -7,15 +7,31 @@ const Navber = () => {
 
 
 
-       <li> <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 " : ''} to='/'><Link to=''><a>Home</a></Link></NavLink></li>
+        <NavLink className={({ isActive }) => isActive ? "underline font-bold rounded-xl bg-yellow-200 " : ''} to='/'>
+        
+       <li> <a>Home</a></li>
+        
+        </NavLink>
       
-       <li> <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 " : ''} to='/login'><Link to=''><a>Item 2</a></Link></NavLink></li>
+        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/login'>
+        
+       <li> <a>Login</a></li>
+        
+        </NavLink>
       
-       <li> <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 " : ''} to='/blog'><Link to=''><a>Item 3</a></Link></NavLink></li>
+        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl" : ''} to='/register'>
+        
+       <li> <a>Register</a></li>
+        
+        </NavLink>
       
-       <li> <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 " : ''} to='/blogs'><Link to=''><a>Item 4</a></Link></NavLink></li>
+        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl" : ''} to='blog'>
+        
+       <li> <a>blog</a></li>
+        
+        </NavLink>
       
-
+       
 
 
 
