@@ -1,0 +1,74 @@
+[
+    {
+        "img": "https://m.media-amazon.com/images/I/81FC9xAaLDL._AC_SL1500_.jpg",
+        "name": "Classic Teddy Bear",
+        "price": "19",
+        "category": "1",
+        "rating": "4.8",
+        "details": "SOFT & HUGGABLE: This adorable plush toy is made from soft, huggable materials and features surface-washable construction for easy cleaning. Every Toothpick teddy bear plush is appropriate for ages 1 and up and ships in a protective poly bag."
+    },
+    {
+        "img": "https://m.media-amazon.com/images/I/91siUPbx5NL._AC_SL1500_.jpg",
+        "name": "GUND Philbin Teddy Bear",
+        "price": "27",
+        "category": "1",
+        "rating": "4.8",
+        "details": "CLASSIC BIG BROWN TEDDY BEAR: Philbin’s big paws mean bigger bear hugs to share with friends! This classic chocolate brown 18 plush stuffed bear design features cute paw pad accents and a curious expression that’s impossible not to love!"
+    },
+    {
+        "img": "https://m.media-amazon.com/images/I/81Gu2ToQfZL._AC_SL1500_.jpg",
+        "name": "GUND Kai Teddy Bear ",
+        "category": "1",
+        "price": "24",
+        "rating": "4.9",
+        "details": "KAI TEDDY BEAR: Available in 12 and 23 sizes, Kai boasts super-soft plush, a whimsical, modern style with an oversized head, embroidered paw pads, and a beige muzzle. Kai is perfect for every personality, available in multiple sizes and colors."
+    },
+    {
+        "img": "https://m.media-amazon.com/images/I/61fj3Aq8rgL._AC_SL1500_.jpg",
+        "name": " Concavenator Dinosaur",
+        "category": "2",
+        "price": "14",
+        "rating": "4.8",
+        "details": "Discover the thrills and adventure of the whole Jurassic World Series captured in this line that is named for Jurassic Park's founder and sets a new quality standard for dinosaur collectables – The Hammond Collection!"
+    },
+    {
+        "img": "https://m.media-amazon.com/images/I/713lBMpbSXL._AC_SL1500_.jpg",
+        "name": "",
+        "category": "Ankylosaurus Dinosaur",
+        "price": "38",
+        "rating": "4.8",
+        "details": "Celebrate Jurassic Park’s 30th Anniversary! It’s been 30 years since the premiere of the franchise in 1993. Special themed packaging includes the 30th Anniversary logo."
+    },
+    {
+        "img": "https://m.media-amazon.com/images/I/612Z-YTDmbL._AC_SL1500_.jpg",
+        "name": "Corythosaurus Dinosaur",
+        "category": "2",
+        "price": "18",
+        "rating": "4.8",
+        "details": "Deluxe articulation! This action figure has 16 movable joints and a wired tail to accommodate multiple posing options for play, display and scene creation."
+    },
+    {
+        "img": "https://m.media-amazon.com/images/I/819t3qdQV7L._AC_SL1500_.jpg",
+        "name": "Jellyroll Unicorn",
+        "category": "3",
+        "price": "9",
+        "rating": "4.7",
+        "details": "High quality materials and hand construction makes for a unique and soft touch. Vibrant hot pink fur patterned with pastel yellow and lavender swirls and a fluffy light pink mane and tail"
+    },
+    {
+        "img": "https://m.media-amazon.com/images/I/81T8Ypb7xCL._AC_SL1500_.jpg",
+        "name": "Bubblegum Koala",
+        "category": "3",
+        "price": "12",
+        "rating": "4.7",
+        "details": "Vibrant aqua-blue fur patterned with pastel pink and yellow swirls and bright aqua ears Shiny and holographic plush silver unicorn horn Lock-washer eyes and double-bagged filling"
+    },
+    {
+        "img": "https://m.media-amazon.com/images/I/919er-B0BaL._AC_SL1500_.jpg",
+        "name": "Tutti Frutti Pegasus",
+        "price": "19",
+        "category": "3",
+        "rating": "4.7",
+        "details": "Bright purple holographic plush wings and an equally bright purple mane and tail Lock-washer eyes and double-bagged filling ensure safety and long-term enjoyment suitable for all ages"
+    }
+]
