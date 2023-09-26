@@ -10,6 +10,7 @@ import Home from './Pages/Home/Home/Home.jsx';
 import Login from './Pages/Login/Login.jsx';
 import Register from './Pages/Login/Register.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
+import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       },
     ]
   },
+  {
+    path:'*',
+    element:<ErrorPage></ErrorPage>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
