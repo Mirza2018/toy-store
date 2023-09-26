@@ -11,6 +11,7 @@ import Login from './Pages/Login/Login.jsx';
 import Register from './Pages/Login/Register.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
+import AllToys from './Pages/Alltoys/AllToys.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/alltoys',
+        element: <AllToys></AllToys>
       },
     ]
   },

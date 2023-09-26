@@ -1,6 +1,6 @@
-import React from 'react';
 
-const Toys = ({ toy }) => {
+
+const Alltoy = ({toy}) => {
     const { name,img,price,rating,details } = toy
     return (
        
@@ -21,5 +21,4 @@ const Toys = ({ toy }) => {
 
     );
 };
-
-export default Toys;
+export default Alltoy;

@@ -3,35 +3,40 @@ import logo from '../../../assets/Duplo_logo_2022.png'
 
 const Navber = () => {
     const liTag = <>
-       
+
 
 
 
         <NavLink className={({ isActive }) => isActive ? "underline font-bold rounded-xl bg-yellow-200 " : ''} to='/'>
-        
-       <li> <a>Home</a></li>
-        
+
+            <li> <a>Home</a></li>
+
         </NavLink>
-      
+
+        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/alltoys'>
+
+            <li> <a>All toys</a></li>
+
+        </NavLink>
         <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/login'>
-        
-       <li> <a>Login</a></li>
-        
+
+            <li> <a>Login</a></li>
+
         </NavLink>
-      
+
         <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl" : ''} to='/register'>
-        
-       <li> <a>Register</a></li>
-        
+
+            <li> <a>Register</a></li>
+
         </NavLink>
-      
+
         <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl" : ''} to='blog'>
-        
-       <li> <a>blog</a></li>
-        
+
+            <li> <a>blog</a></li>
+
         </NavLink>
-      
-       
+
+
 
 
 
