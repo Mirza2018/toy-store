@@ -16,11 +16,11 @@ const Navber = () => {
 
         </NavLink>
 
-        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/alltoys'>
+        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/alltoys'><li> <a>All toys</a></li></NavLink>
 
-            <li> <a>All toys</a></li>
+        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/addtoys'><li> <a>Add toys</a></li></NavLink>
 
-        </NavLink>
+
         <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/login'>
 
             <li> <a>Login</a></li>
