@@ -4,23 +4,38 @@ import Alltoy from "./Alltoy";
 
 const AllToys = () => {
     const [toys, setToys] = useState([])
-
+    const [input, setInput] = useState('')
+    
     useEffect(() => {
         fetch('http://localhost:5000/toys')
             .then(res => res.json())
-            .then(data => setToys(data))
+            .then(data => {
+                const result = data.filter(d => d && d.name && d.name.toLowerCase().includes(input))
+                const final = result.slice(0, 20)
+                setToys(final)
 
-    }, [])
+            }
+            )
+
+    }, [input])
+
 
     return (
-        <div className='grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 mt-10 '>
-            {
-                toys.map(toy => <Alltoy key={toy._id}
-                    toy={toy}
-                ></Alltoy>)
-            }
+        <>
 
-        </div>
+            <form action="">
+                <center>
+                    <input className="input input-bordered input-success w-full max-w-xs" type="text" name="text" onChange={(e) => setInput(e.target.value)} placeholder="Search here" /><h1>Search toys </h1>
+                </center>
+            </form>
+            <div className='grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 mt-10 '>
+                {
+                    toys.map(toy => <Alltoy key={toy._id}
+                        toy={toy}
+                    ></Alltoy>)
+                }
+
+            </div></>
     );
 };
 

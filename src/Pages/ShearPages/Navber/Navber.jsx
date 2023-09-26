@@ -1,7 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/Duplo_logo_2022.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../../Provider/AuthProvider';
 
 const Navber = () => {
+    const { user,logOut } = useContext(AuthContext)
     const liTag = <>
 
 
@@ -63,7 +66,10 @@ const Navber = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                {
+                    user && <a onClick={logOut} className="btn">Logout</a>
+                }
+
             </div>
         </div>
     );
