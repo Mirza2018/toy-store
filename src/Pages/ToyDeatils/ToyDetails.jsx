@@ -1,20 +1,62 @@
 
+import { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const ToyDetails = () => {
+    const { user } = useContext(AuthContext)
     const toy = useLoaderData()
     const { _id, name, img, price, rating, details } = toy
 
 
     const handleBuynow = (toyin) => {
-        fetch("http://localhost:5000/buy", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(toyin)
+        const name = toyin.name;
+        const img = toyin.img;
+        const price = toyin.price;
+        const email = user?.email;
+        if (!email) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You are not Login!',
+                footer: '<a href="/login">Login Now?</a>'
+              })
+        }
+        const person = user.displayName;
+        const info = {
+            email, person, name, img, price
+        }
+
+        Swal.fire({
+            title: 'Are you sure Buy this?',
+            text: "You are add this in your cart!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Buy it!'
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
+            .then((result) => {
+                if (result.isConfirmed) {
+
+                    fetch("http://localhost:5000/buy", {
+                        method: "POST",
+                        headers: { "content-type": "application/json" },
+                        body: JSON.stringify(info)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+
+                            if (data.insertedId) {
+                                Swal.fire(
+                                    'Successfully Buy!',
+                                    'To see go to cart!',
+                                    'success'
+                                )
+                            }
+                       })
+                }
             })
     }
     return (
@@ -31,7 +73,7 @@ const ToyDetails = () => {
                         <p className="py-6">{details}</p>
 
 
-                        <button onClick={()=>handleBuynow(toy)} className="btn btn-primary">Buy now</button>
+                        <button onClick={() => handleBuynow(toy)} className="btn btn-primary">Buy now</button>
                     </div>
                 </div>
             </div>

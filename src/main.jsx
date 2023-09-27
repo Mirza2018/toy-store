@@ -14,6 +14,7 @@ import ErrorPage from './Pages/ErrorPage/ErrorPage.jsx';
 import AllToys from './Pages/Alltoys/AllToys.jsx';
 import AddToys from './Pages/AddToys/AddToys.jsx';
 import ToyDetails from './Pages/ToyDeatils/ToyDetails.jsx';
+import MyToys from './Pages/MyToys/MyToys.jsx';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         path: '/addtoys',
         element: <AddToys></AddToys>
+      },
+      {
+        path: '/mytoys',
+        element: <MyToys></MyToys>,
+        
       },
       {
         path: '/toys/:id',

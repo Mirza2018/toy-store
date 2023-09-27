@@ -1,12 +1,68 @@
-import React, { useContext } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 
 const Toys = ({ toy }) => {
     const { user } = useContext(AuthContext)
-    const { _id,name,img,price,rating,details } = toy
+    const { _id, name, img, price, rating, details } = toy
+
+
+
+
+    const handleBuynow = (toyin) => {
+        const name = toyin.name;
+        const img = toyin.img;
+        const price = toyin.price;
+        const email = user?.email;
+        if (!email) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You are not Login!',
+                footer: '<a href="/login">Login Now?</a>'
+              })
+        }
+
+        
+        const person = user.displayName;
+        const info = {
+            email, person, name, img, price
+        }
+
+        Swal.fire({
+            title: 'Are you sure Buy this?',
+            text: "You are add this in your cart!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Buy it!'
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+
+                    fetch("http://localhost:5000/buy", {
+                        method: "POST",
+                        headers: { "content-type": "application/json" },
+                        body: JSON.stringify(info)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+
+                            if (data.insertedId) {
+                                Swal.fire(
+                                    'Successfully Buy!',
+                                    'To see go to cart!',
+                                    'success'
+                                )
+                            }
+                        })
+                }
+            })
+    }
     return (
-       <>
+        <>
             <div className="card w-96 bg-base-100 shadow-xl m-10">
                 <figure className="px-10 pt-10">
                     <img src={img} alt="Shoes" className="rounded-xl" />
@@ -16,62 +72,19 @@ const Toys = ({ toy }) => {
                     <p>price: $ {price}</p>
                     <p>Rating: $ {rating}</p>
                     <div className="card-actions">
-                         <Link to={`/toys/${_id}`}><button className="btn btn-primary">Details</button></Link>
-                        <button className="btn btn-primary">Buy Now</button>
+                        <Link to={`/toys/${_id}`}><button className="btn btn-primary">Details</button></Link>
+                        <button onClick={() => handleBuynow(toy)} className="btn btn-primary">Buy now</button>
                     </div>
                 </div>
             </div>
-            
-            
-
-
-
-            <dialog id="my_modal_4" className="modal">
-                <div className="modal-box w-11/12 max-w-5xl">
-
-                    {
-                        user ?
-                            <div>
-
-                                <figure className="px-10 pt-10 mx-auto w-96">
-                                    <img src={img} alt="Shoes" className="rounded-xl" />
-                                </figure>
-                                <h3 className="font-bold text-lg">Name: {name}</h3>
-                                <p className="py-4">{details}</p>
-                                <h3 className="font-bold text-lg">Price: ${price}</h3>
-                                <div className="modal-action">
-                                    
-                                    <button className="btn btn-primary">Buy now</button>
-
-                                </div>
-                                </div>
-
-
-                                :
-                                <center>
-                                    <h3 className="font-bold text-lg">Log In first</h3>
-                                    <Link to='/login'>
-                                        <button className="btn btn-primary">Login</button></Link></center>
-
-}
 
 
 
 
-                                <form method="dialog">
-                                    {/* if there is a button, it will close the modal */}
-
-                                    <button className="btn">Close</button>
-                                </form>
-                            </div>
-            
-            </dialog>
 
 
 
-
-            
-            </>
+        </>
 
     );
 };
