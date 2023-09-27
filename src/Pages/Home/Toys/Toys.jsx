@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 
 const Toys = ({ toy }) => {
-    const { user,handleBuynow } = useContext(AuthContext)
+    const { user, handleBuynow } = useContext(AuthContext)
     const { _id, name, img, price, rating, details } = toy
 
 
 
 
-    
+
     return (
         <>
             <div className="card w-96 bg-base-100 shadow-xl m-10">
@@ -22,8 +22,18 @@ const Toys = ({ toy }) => {
                     <p>price: $ {price}</p>
                     <p>Rating: $ {rating}</p>
                     <div className="card-actions">
-                        <Link to={`/toys/${_id}`}><button className="btn btn-primary">Details</button></Link>
+
+                        {user?<Link to={`/toys/${_id}`}>
+                            <button className="btn btn-primary">Details</button>
+                        </Link>
+                        :
+                        
+                            <button className="btn btn-primary">Details</button>
+                       }
+
                         <button onClick={() => handleBuynow(toy)} className="btn btn-primary">Buy now</button>
+
+
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ const AllToys = () => {
     const [input, setInput] = useState('')
 
     useEffect(() => {
-        fetch('http://localhost:5000/toys')
+        fetch('http://localhost:5000/toy')
             .then(res => res.json())
             .then(data => {
                 const result = data.filter(d => d && d.name && d.name.toLowerCase().includes(input))

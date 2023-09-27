@@ -17,6 +17,7 @@ import ToyDetails from './Pages/ToyDeatils/ToyDetails.jsx';
 import MyToys from './Pages/MyToys/MyToys.jsx';
 import AddItems from './Pages/AdditemsDetails/AddItems.jsx';
 import ItemsUpdateAndDelete from './Pages/ItemsUpdateandDelete/ItemsUpdateAndDelete.jsx';
+import PrivetRoute from './Pages/PrivetRoute/PrivetRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -41,24 +42,24 @@ const router = createBrowserRouter([
       },
       {
         path: '/addtoys',
-        element: <AddToys></AddToys>
+        element: <PrivetRoute><AddToys></AddToys></PrivetRoute>
       },
       {
         path: '/additems',
-        element: <AddItems></AddItems>
+        element: <PrivetRoute><AddItems></AddItems></PrivetRoute>
       },
       {
         path: '/mytoys',
-        element: <MyToys></MyToys>
+        element: <PrivetRoute><MyToys></MyToys></PrivetRoute>
       },
       {
         path: '/toys/:id',
-        element: <ToyDetails></ToyDetails>,
+        element: <PrivetRoute><ToyDetails></ToyDetails></PrivetRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
       },
       {
         path: '/additems/:id',
-        element: <ItemsUpdateAndDelete></ItemsUpdateAndDelete>,
+        element: <PrivetRoute><ToyDetails></ToyDetails></PrivetRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
       },
     ]

@@ -1,37 +1,55 @@
 
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import { FcGoogle } from "react-icons/fc";
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useContext } from "react";
 
 const Login = () => {
+
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
     const navigate = useNavigate()
     const { logIn, googleLogIn } = useContext(AuthContext)
+
     const handleForm = e => {
         e.preventDefault()
         const password = e.target.password.value;
         const email = e.target.email.value;
         console.log(password, email);
         logIn(email, password)
-        .then(res => {
-            console.log(res.user);
-            Swal.fire(
-                'Successfully login!',
-                'your welcome',
-                'success'
-            )
-            e.target.reset()
-            navigate(from)
-      
-        })
-        .catch(error => {
-            console.log(error);
-        })
+            .then(res => {
+                console.log(res.user);
+                Swal.fire(
+                    'Successfully login!',
+                    'your welcome',
+                    'success'
+                )
+                e.target.reset()
+                navigate(from)
 
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    }
+    const googlePopup = () => {
+        googleLogIn()
+            .then(res => {
+                console.log(res.user);
+                Swal.fire(
+                    'Successfully login!',
+                    'your welcome',
+                    'success'
+                )
+                navigate(from)
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
@@ -61,11 +79,12 @@ const Login = () => {
                                             </label>
                                             <input type="password" name='password' required placeholder="password" className="input input-bordered" />
                                             <label className="label">
-                                            <Link to='/register'><a href="#" className="label-text-alt link link-hover">Don't have account? register!</a></Link>
+                                                <Link to='/register'><a href="#" className="label-text-alt link link-hover">Don't have account? register!</a></Link>
                                             </label>
                                         </div>
                                         <div className="form-control mt-6">
                                             <button className="btn btn-primary">Login</button>
+                                            <button onClick={googlePopup} className="mt-3 btn "><FcGoogle/> Google</button>
                                         </div>
                                     </form>
 
