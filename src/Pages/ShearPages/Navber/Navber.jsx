@@ -5,7 +5,7 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext)
-
+    const profile =user?.photoURL||"https://pic.onlinewebfonts.com/thumbnails/icons_508735.svg"
     const liTag = <>
 
         <NavLink className={({ isActive }) => isActive ? "underline font-bold rounded-xl bg-yellow-200 " : ''} to='/'><li> <a>Home</a></li></NavLink>
@@ -54,17 +54,14 @@ const Navber = () => {
             <div className="navbar-end">
                 {
                     user ?
-                        <div className='flex justify-center items-center '>
+                        <div className='flex place-items-center gap-6'>
                             <a onClick={logOut} className="btn">Logout</a>
                             <div>
                                 <div className="avatar">
-                                    <div className="w-24 mask mask-hexagon">
-                                        <img src={user?.photoURL} />
+                                    <div className="w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                        <a href="#" title={user?.displayName}> <img src={profile} /></a>
                                     </div>
                                 </div>
-                                {/* <div>
-                                    {user?.displayName}
-                                </div> */}
                             </div>
                         </div>
 
