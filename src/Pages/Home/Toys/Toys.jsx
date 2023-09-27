@@ -23,13 +23,10 @@ const Toys = ({ toy }) => {
                     <p>Rating: $ {rating}</p>
                     <div className="card-actions">
 
-                        {user?<Link to={`/toys/${_id}`}>
+                        <Link to={`/toys/${_id}`}>
                             <button className="btn btn-primary">Details</button>
                         </Link>
-                        :
-                        
-                            <button className="btn btn-primary">Details</button>
-                       }
+
 
                         <button onClick={() => handleBuynow(toy)} className="btn btn-primary">Buy now</button>
 

@@ -5,41 +5,25 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 
 const Navber = () => {
     const { user, logOut } = useContext(AuthContext)
+
     const liTag = <>
 
-
-
-
-        <NavLink className={({ isActive }) => isActive ? "underline font-bold rounded-xl bg-yellow-200 " : ''} to='/'>
-
-            <li> <a>Home</a></li>
-
-        </NavLink>
-
+        <NavLink className={({ isActive }) => isActive ? "underline font-bold rounded-xl bg-yellow-200 " : ''} to='/'><li> <a>Home</a></li></NavLink>
         <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/alltoys'><li> <a>All toys</a></li></NavLink>
+        {
+            user ?
 
-        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/addtoys'><li> <a>Add toys</a></li></NavLink>
-        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/additems'><li> <a>My added Toys</a></li></NavLink>
-        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/mytoys'><li> <a>My Add Cart</a></li></NavLink>
+                <>
+                    <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/addtoys'><li> <a>Add toys</a></li></NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/additems'><li> <a>My added Toys</a></li></NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/mytoys'><li> <a>My Add Cart</a></li></NavLink></>
+                :
+                <>
+                    <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/login'><li> <a>Login</a></li></NavLink>
+                    <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl" : ''} to='/register'><li> <a>Register</a></li></NavLink></>}
 
 
-        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/login'>
-
-            <li> <a>Login</a></li>
-
-        </NavLink>
-
-        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl" : ''} to='/register'>
-
-            <li> <a>Register</a></li>
-
-        </NavLink>
-
-        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl" : ''} to='blog'>
-
-            <li> <a>blog</a></li>
-
-        </NavLink>
+        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl" : ''} to='blog'><li> <a>Blogs</a></li></NavLink>
 
 
 
@@ -69,7 +53,25 @@ const Navber = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user && <a onClick={logOut} className="btn">Logout</a>
+                    user ?
+                        <div className='flex justify-center items-center '>
+                            <a onClick={logOut} className="btn">Logout</a>
+                            <div>
+                                <div className="avatar">
+                                    <div className="w-24 mask mask-hexagon">
+                                        <img src={user?.photoURL} />
+                                    </div>
+                                </div>
+                                {/* <div>
+                                    {user?.displayName}
+                                </div> */}
+                            </div>
+                        </div>
+
+                        :
+                        <>
+
+                        </>
                 }
 
             </div>
