@@ -17,26 +17,26 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currrentUser => {
             setUser(currrentUser);
             setLodding(false)
-            // if (currrentUser && currrentUser.email) {
-            //     const loggedUser = { email: currrentUser.email }
-            //     fetch('http://localhost:5000/jwt', {
-            //         method: "POST",
-            //         headers: {
-            //             'content-type': 'application/json'
-            //         },
-            //         body: JSON.stringify(loggedUser)
-            //     })
-            //         .then(res => res.json())
-            //         .then(data => {
-            //             console.log('jwt response', data);
-            //             localStorage.setItem('volunteer-access-token', data.token)
-            //         })
-            // }
-            // else{
-            //     localStorage.removeItem('volunteer-access-token')
-            // }
+            if (currrentUser && currrentUser.email) {
+                const loggedUser = { email: currrentUser.email }
+                fetch('http://localhost:5000/jwt', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(loggedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('jwt response', data);
+                        localStorage.setItem('toys-access-token', data.token)
+                    })
+            }
+            else {
+                localStorage.removeItem('toys-access-token')
+            }
 
-           
+
         })
         return () => {
             unsubscribe;
@@ -90,7 +90,7 @@ const AuthProvider = ({ children }) => {
                 title: 'Oops...',
                 text: 'You are not Login!',
                 footer: '<a href="/login">Login Now?</a>'
-              })
+            })
         }
 
 

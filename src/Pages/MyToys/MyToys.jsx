@@ -1,11 +1,36 @@
-import { useLoaderData } from "react-router-dom";
+
 import MyToy from "./MyToy";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const MyToys = () => {
-    const toysAll = useLoaderData()
-    const [toys,setToys]=useState(toysAll)
+    const {user}=useContext(AuthContext)
+    const navigate=useNavigate()
+    const [toys,setToys]=useState([])
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/mytoys?email=${user?.email}`,{
+            method:"GET",
+            headers:{
+                authorization:`Bearer ${localStorage.getItem('toys-access-token')}`
+            }
+        }
+
+        )
+            .then(res => res.json())
+            .then(data => {
+                if(!data.erroe){
+                  return  setToys(data)
+                }
+                else{
+                    navigate('/')
+                }
+            
+            })
+    }, [user.email,navigate])
+
 
     const prices = toys.map(t => t.price)
  
@@ -55,6 +80,7 @@ const MyToys = () => {
                 <thead>
                     <tr>
 
+                        <th></th>
                         <th>Toy Details</th>
                         <th>Buyer name</th>
                         <th>Price</th>
@@ -81,9 +107,10 @@ const MyToys = () => {
                     <tr>
 
                         <th></th>
+                        <th></th>
                         <th>Total Price =</th>
                         <th>${abc}</th>
-                        <th></th>
+                        
                     </tr>
                 </tfoot>
 

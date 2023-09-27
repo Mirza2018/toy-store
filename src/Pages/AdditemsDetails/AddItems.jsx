@@ -2,15 +2,30 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import AddItem from "./AddItem";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddItems = () => {
     const { user } = useContext(AuthContext)
+    const navigate=useNavigate()
     const [toys, setToys] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/toys?email=${user.email}`)
+        fetch(`http://localhost:5000/toys?email=${user.email}`,{
+            method:"GET",
+            headers:{
+                authorization:`Bearer ${localStorage.getItem('toys-access-token')}`
+            }
+        })
             .then(res => res.json())
-            .then(data => setToys(data))
-    }, [user.email])
+            .then(data => {
+                if(!data.erroe){
+                  return  setToys(data)
+                }
+                else{
+                    navigate('/')
+                }
+            
+            })
+    }, [user.email,navigate])
 
 
     const handelDelete = (id) => {
