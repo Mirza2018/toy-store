@@ -1,6 +1,6 @@
 
 import { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -24,6 +24,8 @@ const ToyDetails = () => {
 
 
                         <button onClick={() => handleBuynow(toy)} className="btn btn-primary">Buy now</button>
+                        <Link className='ml-4' to='/alltoys'><button  className="btn btn-info">Go Back</button></Link>
+                        
                     </div>
                 </div>
             </div>

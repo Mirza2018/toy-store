@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
 
 const Navber = () => {
-    const { user,logOut } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const liTag = <>
 
 
@@ -19,6 +19,8 @@ const Navber = () => {
         <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/alltoys'><li> <a>All toys</a></li></NavLink>
 
         <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/addtoys'><li> <a>Add toys</a></li></NavLink>
+        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/additems'><li> <a>My added Toys</a></li></NavLink>
+        <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/mytoys'><li> <a>My Add Cart</a></li></NavLink>
 
 
         <NavLink className={({ isActive }) => isActive ? "underline font-bold bg-yellow-200 rounded-xl " : ''} to='/login'>

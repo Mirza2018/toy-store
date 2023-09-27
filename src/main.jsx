@@ -15,6 +15,7 @@ import AllToys from './Pages/Alltoys/AllToys.jsx';
 import AddToys from './Pages/AddToys/AddToys.jsx';
 import ToyDetails from './Pages/ToyDeatils/ToyDetails.jsx';
 import MyToys from './Pages/MyToys/MyToys.jsx';
+import AddItems from './Pages/AdditemsDetails/AddItems.jsx';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: '/addtoys',
         element: <AddToys></AddToys>
+      },
+      {
+        path: '/additems',
+        element: <AddItems></AddItems>
       },
       {
         path: '/mytoys',
