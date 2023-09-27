@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import AddItem from "./AddItem";
+import Swal from "sweetalert2";
 
 const AddItems = () => {
     const { user } = useContext(AuthContext)
@@ -11,17 +12,43 @@ const AddItems = () => {
             .then(data => setToys(data))
     }, [user.email])
 
-    console.log(toys);
 
-// const handelUpdate=(id)=>{
-//     fetch(`http://localhost:5000/toys`,{
-//         method:"PATCH",
-//         headers:{
-//             "content-type":"application/json"
-//         },
-//         body:JSON.stringify()
-//     })
-// }
+    const handelDelete = (id) => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/toys/${id}`, {
+                        method: "DELETE"
+                    })
+
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
+
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your Toys has been deleted.',
+                                    'success'
+                                )
+                                const remaing = toys.filter(t => t._id !== id)
+                                setToys(remaing)
+                            }
+                        })
+
+                }
+            })
+    }
+
+
 
 
     return (
@@ -47,6 +74,7 @@ const AddItems = () => {
                             toys.map(toy => <AddItem
                                 key={toy._id}
                                 toy={toy}
+                                handelDelete={handelDelete}
                             ></AddItem>)
                         }
 

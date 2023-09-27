@@ -16,6 +16,7 @@ import AddToys from './Pages/AddToys/AddToys.jsx';
 import ToyDetails from './Pages/ToyDeatils/ToyDetails.jsx';
 import MyToys from './Pages/MyToys/MyToys.jsx';
 import AddItems from './Pages/AdditemsDetails/AddItems.jsx';
+import ItemsUpdateAndDelete from './Pages/ItemsUpdateandDelete/ItemsUpdateAndDelete.jsx';
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
       {
         path: '/toys/:id',
         element: <ToyDetails></ToyDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+      },
+      {
+        path: '/additems/:id',
+        element: <ItemsUpdateAndDelete></ItemsUpdateAndDelete>,
         loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
       },
     ]
