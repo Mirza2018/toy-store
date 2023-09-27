@@ -76,6 +76,60 @@ const AuthProvider = ({ children }) => {
             ))
 
     }
+
+
+
+    const handleBuynow = (toyin) => {
+        const name = toyin.name;
+        const img = toyin.img;
+        const price = toyin.price;
+        const email = user?.email;
+        if (!email) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'You are not Login!',
+                footer: '<a href="/login">Login Now?</a>'
+              })
+        }
+
+
+        const person = user.displayName;
+        const info = {
+            email, person, name, img, price
+        }
+
+        Swal.fire({
+            title: 'Are you sure Buy this?',
+            text: "You are add this in your cart!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Buy it!'
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+
+                    fetch("http://localhost:5000/buy", {
+                        method: "POST",
+                        headers: { "content-type": "application/json" },
+                        body: JSON.stringify(info)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+
+                            if (data.insertedId) {
+                                Swal.fire(
+                                    'Successfully Buy!',
+                                    'To see go to cart!',
+                                    'success'
+                                )
+                            }
+                        })
+                }
+            })
+    }
     const values = {
         user,
         createUser,
@@ -83,7 +137,8 @@ const AuthProvider = ({ children }) => {
         googleLogIn,
         update,
         logOut,
-        loadding
+        loadding,
+        handleBuynow
 
     }
     return (
