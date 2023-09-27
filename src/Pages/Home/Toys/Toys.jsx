@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Toys = ({ toy }) => {
     const { user } = useContext(AuthContext)
-    const { name,img,price,rating,details } = toy
+    const { _id,name,img,price,rating,details } = toy
     return (
        <>
             <div className="card w-96 bg-base-100 shadow-xl m-10">
@@ -16,9 +16,7 @@ const Toys = ({ toy }) => {
                     <p>price: $ {price}</p>
                     <p>Rating: $ {rating}</p>
                     <div className="card-actions">
-                    <button className="btn btn-primary"
-                            onClick={() => document.getElementById('my_modal_4').showModal()}
-                        >See Details</button>
+                         <Link to={`/toys/${_id}`}><button className="btn btn-primary">Details</button></Link>
                         <button className="btn btn-primary">Buy Now</button>
                     </div>
                 </div>

@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import Alltoy from "./Alltoy";
 
 
+
+
+
 const AllToys = () => {
     const [toys, setToys] = useState([])
     const [input, setInput] = useState('')
-    
+
     useEffect(() => {
         fetch('http://localhost:5000/toys')
             .then(res => res.json())
@@ -30,12 +33,22 @@ const AllToys = () => {
             </form>
             <div className='grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 mt-10 '>
                 {
-                    toys.map(toy => <Alltoy key={toy._id}
-                        toy={toy}
-                    ></Alltoy>)
-                }
+                    toys.map(toy => (
+                        <Alltoy key={toy._id}
+                            toy={toy}
+                        >
 
-            </div></>
+                        </Alltoy>
+
+                    ))
+                }
+            </div>
+
+
+
+
+
+        </>
     );
 };
 
