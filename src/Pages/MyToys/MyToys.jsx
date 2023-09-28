@@ -4,8 +4,10 @@ import Swal from "sweetalert2";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import useTitle from "../Hook/useTitle";
 
 const MyToys = () => {
+    useTitle('My-Buy-toys')
     const {user}=useContext(AuthContext)
     const navigate=useNavigate()
     const [toys,setToys]=useState([])

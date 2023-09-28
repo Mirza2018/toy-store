@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Alltoy from "./Alltoy";
+import useTitle from "../Hook/useTitle";
 
 
 
@@ -8,6 +9,8 @@ import Alltoy from "./Alltoy";
 const AllToys = () => {
     const [toys, setToys] = useState([])
     const [input, setInput] = useState('')
+
+    useTitle('All-toys')
 
     useEffect(() => {
         fetch('http://localhost:5000/toy')

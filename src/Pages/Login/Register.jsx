@@ -2,9 +2,14 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import useTitle from '../Hook/useTitle';
 
 const Register = () => {
+    
+
+    useTitle('Register')
     const { createUser, update } = useContext(AuthContext)
+    document.title='Duplo-Register-from'
     const handleForm = e => {
         e.preventDefault()
         const password = e.target.password.value;

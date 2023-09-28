@@ -5,9 +5,10 @@ import { FcGoogle } from "react-icons/fc";
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useContext } from "react";
+import useTitle from "../Hook/useTitle";
 
 const Login = () => {
-
+    useTitle('Login')
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
     const navigate = useNavigate()
