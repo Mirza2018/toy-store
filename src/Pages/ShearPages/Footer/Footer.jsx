@@ -2,7 +2,7 @@ import React from 'react';
 import logo from '../../../assets/Duplo_logo_2022.png'
 const Footer = () => {
     return (
-        <footer className="footer fixed p-10 bg-neutral text-neutral-content bottom-0">
+        <footer className="footer p-10 bg-neutral text-neutral-content bottom-0">
             <aside>
                 <img width="80" height="80" fillRule="evenodd" clipRule="evenodd" src={logo} alt="" />
                 <p>Toys Company<br />Providing reliable tech since 1992</p>

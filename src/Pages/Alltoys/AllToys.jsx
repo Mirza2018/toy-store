@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Alltoy from "./Alltoy";
 import useTitle from "../Hook/useTitle";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 
 
 
 const AllToys = () => {
+    const{loadding}=useContext(AuthContext)
     const [toys, setToys] = useState([])
     const [input, setInput] = useState('')
 
     useTitle('All-toys')
+
+  
 
     useEffect(() => {
         fetch('http://localhost:5000/toy')
@@ -25,6 +29,9 @@ const AllToys = () => {
 
     }, [input])
 
+    if (loadding) {
+        return <center><span className="loading loading-spinner text-secondary"></span></center> 
+    }
 
     return (
         <>
