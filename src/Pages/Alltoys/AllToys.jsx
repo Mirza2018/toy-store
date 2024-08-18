@@ -17,7 +17,7 @@ const AllToys = () => {
   
 
     useEffect(() => {
-        fetch('http://localhost:5000/toy')
+        fetch('https://toys-store-server.onrender.com/toy')
             .then(res => res.json())
             .then(data => {
                 const result = data.filter(d => d && d.name && d.name.toLowerCase().includes(input))

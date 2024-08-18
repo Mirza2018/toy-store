@@ -1,15 +1,15 @@
 
-import { useContext } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { useContext} from 'react';
+import { Link, useLoaderData} from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
-import Swal from 'sweetalert2';
 import useTitle from '../Hook/useTitle';
 
 const ToyDetails = () => {
     useTitle('Toy-Details')
-    const { user,handleBuynow } = useContext(AuthContext)
+    const { handleBuynow } = useContext(AuthContext)
     const toy = useLoaderData()
-    const { _id, name, img, price, rating, details } = toy
+    const {  name, img, price, rating, details } = toy
+
 
     return (
         <div>

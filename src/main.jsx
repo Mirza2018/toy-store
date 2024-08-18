@@ -55,12 +55,12 @@ const router = createBrowserRouter([
       {
         path: '/toys/:id',
         element: <PrivetRoute><ToyDetails></ToyDetails></PrivetRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+        loader: ({ params }) => fetch(`https://toys-store-server.onrender.com/toys/${params.id}`)
       },
       {
         path: '/additems/:id',
         element: <PrivetRoute><ItemsUpdateAndDelete></ItemsUpdateAndDelete></PrivetRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+        loader: ({ params }) => fetch(`https://toys-store-server.onrender.com/${params.id}`)
       },
     ]
   },
@@ -69,6 +69,9 @@ const router = createBrowserRouter([
     element:<ErrorPage></ErrorPage>
   }
 ]);
+
+
+// https://toys-store-server.onrender.com/
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>

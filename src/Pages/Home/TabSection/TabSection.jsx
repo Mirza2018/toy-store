@@ -7,7 +7,7 @@ const TabSection = () => {
     const [toys, setToys] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/toy')
+        fetch('https://toys-store-server.onrender.com/toy')
             .then(res => res.json())
             .then(data => {
                 const remaning = data.filter(d => d.category == 1)
@@ -20,7 +20,7 @@ const TabSection = () => {
 
 
     const handleClick = n => {
-        fetch('http://localhost:5000/toy')
+        fetch('https://toys-store-server.onrender.com/toy')
             .then(res => res.json())
             .then(data => {
 

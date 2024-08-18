@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
             setLodding(false)
             if (currrentUser && currrentUser.email) {
                 const loggedUser = { email: currrentUser.email }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://toys-store-server.onrender.com/jwt', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
@@ -111,7 +111,7 @@ const AuthProvider = ({ children }) => {
             .then((result) => {
                 if (result.isConfirmed) {
 
-                    fetch("http://localhost:5000/buy", {
+                    fetch("https://toys-store-server.onrender.com/buy", {
                         method: "POST",
                         headers: { "content-type": "application/json" },
                         body: JSON.stringify(info)

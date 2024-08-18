@@ -21,7 +21,7 @@ const AddToys = () => {
             name, category, price, rating, quantity, img, details,
             email: user.email, seller: user.displayName
         }
-        fetch('http://localhost:5000/toys',{
+        fetch('https://toys-store-server.onrender.com/toys',{
             method:"POST",
             headers:{
                 'content-type':'application/json'

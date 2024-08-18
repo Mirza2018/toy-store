@@ -30,7 +30,7 @@ const {user}=useContext(AuthContext)
             email: user.email, seller: user.displayName
         }
         console.log(toyinfo);
-        fetch(`http://localhost:5000/toys/${_id}`, {
+        fetch(`https://toys-store-server.onrender.com/toys/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

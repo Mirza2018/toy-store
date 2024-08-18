@@ -12,7 +12,7 @@ const AddItems = () => {
     const navigate=useNavigate()
     const [toys, setToys] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/toys?email=${user.email}`,{
+        fetch(`https://toys-store-server.onrender.com/toys?email=${user.email}`,{
             method:"GET",
             headers:{
                 authorization:`Bearer ${localStorage.getItem('toys-access-token')}`
@@ -44,7 +44,7 @@ const AddItems = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/toys/${id}`, {
+                    fetch(`https://toys-store-server.onrender.com/toys/${id}`, {
                         method: "DELETE"
                     })
 
